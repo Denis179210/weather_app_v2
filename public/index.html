@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-beta.3/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/fonts/fontawesome-webfont.woff">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/weather-icons/2.0.9/css/weather-icons.min.css">
+    <link rel="stylesheet" href="main.css">
+</head>
+<body>
+        <div class="container mt-2">
+            <div class="row">
+                    
+                <form id="weather" class="mx-auto rounded p-4">
+                    <div class="form-group row">
+
+                            <label for="city" class="col-sm-6">Enter your city : </label>
+
+                            <div class="col-sm-6 input-group">
+                                <div class="input-group-prepend">
+                                        <span class="input-group-text"><i class="fa fa-building-o" aria-hidden="true"></i></span>
+                                </div>
+                                <input type="text" name="city" id="city" class="form-control city" placeholder="for example : kyiv, moscow, london etc...">
+                                
+                            </div>
+                    </div>
+                    
+                    <div class="form-group row">
+
+                            <label for="country" class="col-sm-6">Enter your country code(ISO) : </label>
+
+                            <div class="col-sm-6 input-group">
+                                <div class="input-group-prepend">
+                                        <span class="input-group-text"><i class="fa fa-list" aria-hidden="true"></i></span>
+                                </div>
+                                <input type="text" name="country" class="form-control country" id="country" placeholder="for example : uk, kz, ru etc...">
+                            </div>
+
+                    </div>
+                    <div class="btn-group d-flex justify-content-end">
+                        <button type="button" class="add btn btn-outline-success js-add"><i class="fa fa-plus"></i></button> 
+                        <button type="button" class="btn btn-outline-info js-getData">get Data</button>
+                        <button type="button" class="btn btn-outline-danger js-fetch">fetch CL </button>
+                    </div>
+                        
+                        <br>
+                        
+                        <br>
+    
+                        
+                    
+                </form>
+            </div>
+        </div>
+
+        <br>
+
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-10">
+                        <table class="city-list col-sm-4 table table-striped table-bordered">
+                                <tr class="hidden">
+                                    <th>№</th>
+                                    <th>City</th>
+                                    <th>Country (ISO)</th>
+                                </tr>
+                        </table>  
+                </div>
+            </div>  
+        </div>
+        
+            
+        </table>
+        <div class="container">
+            <div class="repres row">
+            </div>
+        </div>
+       
+
+    <script type="text/template" class="weather-template">
+
+        <p><span class="data"><%=name.toUpperCase()%>, <%=sys.country%></span> <span class="color fa fa-building-o"></span><br></p>
+        <p><span>weather-type : </span> <span class="data"><%=weather[0].main%></span></p>
+        <p><span>It is <span class="data"><%=weather[0].description%></span> now</span></p>
+        
+        <p> lon - <span class="data"><%=coord.lon%></span>, lat - <span class="data"><%=coord.lat%></span>  <span class="color wi wi-from-nnw"></span></p>
+
+        <p>temperature <span class="data"><%=Math.round(273 - main.temp)%>&#176;</span> deg <span class="color wi wi-thermometer"></span><br></p>
+
+        <p>wind <span class="data"><%=wind.speed%></span> m/s <span class="color wi wi-strong-wind"></span><br></p>
+
+        <p>sunrise <span class="data"><%= new Date(sys.sunrise).toLocaleTimeString()%></span> <span class="color wi wi-sunrise"></span><br></p>
+
+        <p>sunset <span class="data"><%= new Date(sys.sunset).toLocaleTimeString()%></span>  <span class="color wi wi-sunset"></span><br></p>
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.4/lodash.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/js-sha256/0.9.0/sha256.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-beta.3/js/bootstrap.min.js"></script>
+    <script src="common.js"></script>
+</body>
+</html>
